@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .btn{
+        @apply px-4 py-2 rounded-lg font-medium inline-flex items-center justify-center tracking-tight
+    }
+
+    .btn-primary{
+        @apply bg-black text-white 
+    }
+
+    .btn-text{
+        @apply text-black bg-transparent
+    }
+
+    .logo-ticker-image{
+        @apply h-8 w-auto;
+
+    }
+
+    .tag{
+        @apply text-sm inline-flex border border-[#4682DC] px-3 py-1 rounded-lg tracking-tight
+    }
+
+    .section-title{
+        @apply text-center text-3xl md:text-[54px] md:leading-[60px] font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text
+    }
+
+    .section-description{
+        @apply text-center text-[22px] leading-[30px] tracking-tight text-[#010D3E]
+    }
+
+    .section-heading{
+        @apply max-w-[540px] mx-auto
+    }
+
+    .card{
+        @apply p-10 border border-[#222222]/10 rounded-3xl shadow-[0_7px_14px_#EAEAEA] max-w-xs w-full
+    }
+
+    .grid-tile {
+        perspective: 1000px; /* Gives depth for the tilt */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        border-radius: 8px;
+      }
+      
+      .grid-tile:hover {
+        transform: scale(1.05) rotateX(5deg) rotateY(5deg); /* Slight zoom and tilt */
+        box-shadow: 0 4px 20px rgba(0, 123, 255, 0.4); /* Glowing effect */
+      }
+      
+      /* Optional: add a smooth zoom for the content within the tile */
+      .grid-tile-content {
+        transition: transform 0.3s ease;
+      }
+      
+      .grid-tile:hover .grid-tile-content {
+        transform: scale(1.02);
+      }
+      
+
+      .transition {
+        transition: transform 0.3s ease;
+      }
+
+
+      .footer-container {
+        background-color: #101522;
+    }
+    
+    .footer-wrap {
+        padding: 48px 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    
+    .footer-links-container {
+        padding: 48px 24px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    @media screen and (max-width: 820px) {
+        .footer-links-container {
+            padding-top: 32px;
+        }
+    }
+    
+    .footer-links-wrapper {
+        display: flex;
+    }
+    
+    @media screen and (max-width: 820px) {
+        .footer-links-wrapper {
+            flex-direction: column;
+        }
+    }
+    
+    .footer-link-items {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 16px;
+        text-align: left;
+        width: 160px;
+        box-sizing: border-box;
+        color: #fff;
+    }
+    
+    @media screen and (max-width: 420px) {
+        .footer-link-items {
+            margin: 0;
+            padding: 10px;
+            width: 100%;
+        }
+    }
+    
+    .footer-link-title {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    
+    .footer-link {
+        font-size: 14px;
+        margin-bottom: 0.5rem;
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    .footer-link:hover {
+        color: #01bf71;
+        transition: 0.3s ease-out;
+    }
+    
+    .social-media {
+        max-width: 1000px;
+        width: 100%;
+    }
+    
+    .social-media-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1100px;
+        margin: 40px auto 0 auto;
+    }
+    
+    @media screen and (max-width: 820px) {
+        .social-media-wrap {
+            flex-direction: column;
+        }
+    }
+    
+    .social-logo {
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+        font-weight: bold;
+    }
+    
+    .website-rights {
+        color: #fff;
+        margin-bottom: 16px;
+    }
+    
+    .social-icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 240px;
+    }
+    
+    .social-icon-link {
+        color: #fff;
+        font-size: 24px;
+    }
+    
+      
+}
