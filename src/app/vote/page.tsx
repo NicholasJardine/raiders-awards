@@ -97,6 +97,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import ServicesGrid from '@/components/services_grid';
+import VotingForm from '@/components/voting_form';
 
 export default function Vote(){
     const router = useRouter();
@@ -154,20 +155,19 @@ export default function Vote(){
                 
                 <h3 className='text-[#FFFFFF] text-2xl sm:text-2xl md:text-3xl mt-4 mb-4'>Vote for your winners</h3>
 
-                <div className="flex justify-start w-full px-4"> 
+                <div className="flex justify-start w-full lg:w-[75%]px-4"> 
                     <a className="text-[blue] mb-4" href="/">{`< back`}</a>
                 </div>
 
                 {/* Full-width grey bar on small devices */}
-                <div className='w-screen md:w-[75%] min-h-[40px] flex items-center justify-center bg-[#575756] mt-4 mb-6'>
+                {/* <div className='w-screen md:w-[75%] min-h-[40px] flex items-center justify-center bg-[#575756] mt-4 mb-6'>
                     <p className='text-white'>Select the best first team player</p>
-                </div>
+                </div> */}
 
-                <ServicesGrid/>
-
-                <div className="flex justify-center">
+                        <VotingForm/>
+                {/* <div className="flex justify-center">
                     <button className='btn bg-[#B2B2B1] min-w-[200px] w-full max-w-[300px] py-2 rounded-2xl mb-8' onClick={handleClick}>Next section</button>
-                </div>
+                </div> */}
             </div>
         </section>
     );
