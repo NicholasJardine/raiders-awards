@@ -27,12 +27,10 @@ const ServicesGrid = () => {
     }
   };
   
-    
-
   return (
-    <section className="py-10 bg-[transparent] grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+    <section className="py-10 bg-[#1D1D1B] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
       {[
-        { src: "/web_and_mobile.svg", alt: "Web and Mobile Development", text: "Web and Mobile Development" },
+        { src: "/web_and_mobile.svg", alt: "Web and Mobile Development", text: "Name Surname" },
         { src: "/design.svg", alt: "Wireframes and Design", text: "Wireframes and Design" },
         { src: "/data_analytics.svg", alt: "Data Analytics", text: "Data Analytics" },
         { src: "/cloud_hosting.svg", alt: "Cloud Migration", text: "Cloud Migration" },
@@ -42,7 +40,7 @@ const ServicesGrid = () => {
         <div
           key={index}
           id={`tile-${index}`}
-          className="bg-white p-6 rounded-lg shadow-md transition duration-300 flex flex-col items-center transform hover:shadow-2xl cursor-pointer"
+          className="bg-[#1D1D1B] p-6 rounded-lg shadow-md transition duration-300 flex flex-col items-center transform hover:shadow-2xl cursor-pointer"
           style={{ perspective: "1000px" }}
           onMouseMove={(e) => handleMouseMove(e, index)}
           onMouseLeave={() => handleMouseLeave(index)}
@@ -51,9 +49,10 @@ const ServicesGrid = () => {
             <img
               src={service.src}
               alt={service.alt}
-              className="h-32 w-32 mb-4 object-contain"
+              className="h-20 w-20 mb-4 rounded-full object-cover"
+              style={{ minWidth: '80px', minHeight: '80px' }} // Ensures the image maintains circular shape
             />
-            <p className="text-lg font-semibold">{service.text}</p>
+            <p className="text-xs font-semibold text-[#DDC164] text-center truncate w-full">{service.text}</p>
           </div>
         </div>
       ))}
