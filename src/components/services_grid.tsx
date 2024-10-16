@@ -11,8 +11,8 @@ interface Nominee {
 // Define the prop types for the ServicesGrid component
 interface ServicesGridProps {
   nominees: Nominee[];
-  onNomineeClick: (nomineeId: number) => void;
-  selectedNominee: number | null;
+  onNomineeClick: (nominee: Nominee) => void;  // Accept full nominee object
+  selectedNominee: number | null;  // This will store the selected nominee's ID
 }
 
 const ServicesGrid: React.FC<ServicesGridProps> = ({ nominees, onNomineeClick, selectedNominee }) => {
@@ -23,8 +23,8 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({ nominees, onNomineeClick, s
           key={nominee.id}
           className={`bg-[#1D1D1B] p-6 rounded-lg shadow-md flex flex-col items-center cursor-pointer ${
             selectedNominee === nominee.id ? 'border-2 border-yellow-500' : ''
-          }`}
-          onClick={() => onNomineeClick(nominee.id)}
+          }`}  // Border appears when nominee is selected
+          onClick={() => onNomineeClick(nominee)}  // Pass the full nominee object on click
         >
           <div className="service-tile flex flex-col items-center">
             <img

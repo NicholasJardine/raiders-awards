@@ -207,14 +207,17 @@ const categories: Category[] = [
 export default function VotingForm() {
     const router = useRouter();
     const [currentCategoryIndex, setCurrentCategoryIndex] = useState<number>(0);
-    const [votes, setVotes] = useState<{ [key: number]: number }>({});
+    
+    // Modify votes to store the full nominee object
+    const [votes, setVotes] = useState<{ [key: number]: Nominee }>({});
+    
     const sectionRef = useRef<HTMLDivElement | null>(null);
   
-    const handleNomineeClick = (nomineeId: number): void => {
+    const handleNomineeClick = (nominee: Nominee): void => {
       const categoryId = categories[currentCategoryIndex].id;
       setVotes((prevVotes) => ({
         ...prevVotes,
-        [categoryId]: nomineeId,
+        [categoryId]: nominee,  // Store the full nominee object instead of just the ID
       }));
     };
   
@@ -228,7 +231,6 @@ export default function VotingForm() {
   
     const handleSubmit = async () => {
       try {
-        // Get the session ID from cookies
         const sessionId = Cookies.get('sessionId');
         
         // Make the API call using fetch
@@ -237,10 +239,9 @@ export default function VotingForm() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ selections: votes, sessionId }),  // Send the votes and session ID
+          body: JSON.stringify({ selections: votes, sessionId }),  // Send the full votes object
         });
-    
-        // Check if the response is OK
+  
         if (response.ok) {
           const data = await response.json();
           console.log("Votes submitted successfully:", data);
@@ -252,10 +253,9 @@ export default function VotingForm() {
         console.error("Error submitting votes:", error);
       }
     };
-    
+  
     const currentCategory = categories[currentCategoryIndex];
   
-    // Scroll to the top of the section when the category changes
     useEffect(() => {
       if (sectionRef.current) {
         sectionRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -270,7 +270,7 @@ export default function VotingForm() {
         <ServicesGrid
           nominees={currentCategory.nominees}
           onNomineeClick={handleNomineeClick}
-          selectedNominee={votes[currentCategory.id] ?? null}
+          selectedNominee={votes[currentCategory.id]?.id ?? null}  // Only show selected nominee ID for now
         />
         <button
           onClick={handleNextSection}
@@ -281,7 +281,4 @@ export default function VotingForm() {
       </div>
     );
   }
-
-
-
-
+  
