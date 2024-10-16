@@ -75,20 +75,83 @@
 // };
 
 
-"use client";
-import ArrowIcon from '@/assets/arrow-right.svg';
-import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import { useRouter } from 'next/navigation';
+// "use client";
+// import ArrowIcon from '@/assets/arrow-right.svg';
+// import Image from 'next/image';
+// import { motion, useScroll, useTransform } from 'framer-motion';
+// import { useRef } from 'react';
+// import { useRouter } from 'next/navigation';
 
+
+// export const Hero = () => {
+//   const router = useRouter();
+//   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+//     router.push('/vote');
+//     // Your logic here
+//   };
+//   const heroRef = useRef(null);
+//   const { scrollYProgress } = useScroll({
+//     target: heroRef,
+//     offset: ["start end", "end start"]
+//   });
+
+//   const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+
+//   return (
+//     <section
+//       ref={heroRef}
+//       className='mt-4 pt-8 pb-20 md:pt-5 md:pb-10 bg-[#1D1D1B] overflow-x-clip h-[100vh]'
+//     >
+//       <div className="container flex flex-col items-center text-center">
+//       <Image
+//             src="/raiders-logo.png"
+//             alt="rugby Icon"
+//             width={156}
+//             height={156}
+//             className="mr-3 transform translate-y-1 mb-8"
+//           />
+//         <div className="flex items-center justify-center">
+//           <Image
+//             src="/rugby.svg"
+//             alt="rugby Icon"
+//             width={40}
+//             height={40}
+//             className="mr-3 transform translate-y-1"
+//           />
+//           <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#dcc94a] bg-clip-text">
+//             2024 Awards
+//           </h1>
+//         </div>
+        
+//         <h3 className='text-[#FFFFFF] text-2xl sm:text-2xl md:text-3xl mt-4'>Vote for your winners</h3>
+//         <p className="text-sm sm:text-sm md:text-lg text-[#FFFFFF] tracking-tight mt-6 sm:max-w-[90%] md:max-w-[60%]">
+//         The Raiders Rugby Club Awards Ceremony will take place on October 20th. Make your pick for the following awards: Best First Team Player, Best Forward, Best Backline Player, Best Forward Coach, Best Backline Coach, Best Conditioning Coach, and Best Team Manager.
+//         </p>
+//         <button className='btn bg-[#B2B2B1] w-[40%] rounded-2xl mt-8' onClick={handleClick}>Start Voting</button>
+//       </div>
+//     </section>
+//   );
+// };
+
+
+"use client"; // Ensure this is a client-side component
+
+import { useRouter } from 'next/navigation';
+import useSessionId from '@/hooks/useSessionId'
+import Image from 'next/image';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export const Hero = () => {
   const router = useRouter();
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+
+  // Call the useSessionId hook to generate or retrieve the session ID
+  useSessionId(); 
+
+  const handleClick = () => {
     router.push('/vote');
-    // Your logic here
   };
+
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -103,13 +166,13 @@ export const Hero = () => {
       className='mt-4 pt-8 pb-20 md:pt-5 md:pb-10 bg-[#1D1D1B] overflow-x-clip h-[100vh]'
     >
       <div className="container flex flex-col items-center text-center">
-      <Image
-            src="/raiders-logo.png"
-            alt="rugby Icon"
-            width={156}
-            height={156}
-            className="mr-3 transform translate-y-1 mb-8"
-          />
+        <Image
+          src="/raiders-logo.png"
+          alt="rugby Icon"
+          width={156}
+          height={156}
+          className="mr-3 transform translate-y-1 mb-8"
+        />
         <div className="flex items-center justify-center">
           <Image
             src="/rugby.svg"

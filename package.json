@@ -14,16 +14,21 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.14",
+    "js-cookie": "^3.0.5",
     "lottie-react": "^2.4.0",
     "next": "^14.2.14",
+    "pg": "^8.13.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
