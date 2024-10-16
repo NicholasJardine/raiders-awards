@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import ServicesGrid from '@/components/services_grid';
 import Cookies from 'js-cookie'; 
+import { useRouter } from 'next/navigation'; // Import Next.js router for redirection
+
 // Define the types for a nominee
 interface Nominee {
   id: number;
@@ -127,7 +129,6 @@ const categories: Category[] = [
     // Add the remaining categories and nominees
   ];
   
-
 // export default function VotingForm() {
 //   const [currentCategoryIndex, setCurrentCategoryIndex] = useState<number>(0);
 //   const [votes, setVotes] = useState<{ [key: number]: number }>({});
@@ -204,6 +205,7 @@ const categories: Category[] = [
 
 
 export default function VotingForm() {
+    const router = useRouter();
     const [currentCategoryIndex, setCurrentCategoryIndex] = useState<number>(0);
     const [votes, setVotes] = useState<{ [key: number]: number }>({});
     const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -242,6 +244,7 @@ export default function VotingForm() {
         if (response.ok) {
           const data = await response.json();
           console.log("Votes submitted successfully:", data);
+          router.push('/results');
         } else {
           console.error("Failed to submit votes:", response.status);
         }
