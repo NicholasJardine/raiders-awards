@@ -632,9 +632,9 @@ export default function ViewSelections() {
                   <Image
                     src={nominee.img}
                     alt={nominee.name}
-                    width={100}
-                    height={100}
-                    className="rounded-full object-cover mb-4"
+                    width={80}
+                    height={80}
+                    className="rounded-full object-cover mb-4 mt-4"
                   />
                   <p className="text-lg font-semibold text-white">{nominee.name}</p>
                   <p className="text-sm text-gray-400">{nominee.team}</p>
@@ -649,7 +649,7 @@ export default function ViewSelections() {
         {/* Divider */}
         <hr className="w-3/4 border-t border-gray-300 my-4 mx-auto" />
 
-        <h2 className="text-white text-lg font-semibold">The club's vote</h2>
+        <h2 className="text-white text-lg font-semibold">THE CLUB'S CHOICE</h2>
 
         {/* Display club vote results */}
         {clubVotes.length > 0 ? (
@@ -660,10 +660,13 @@ export default function ViewSelections() {
 
               return (
                 <div key={category.categoryId} className="mb-8">
-                  <h3 className="text-white text-lg font-semibold mb-4">{categoryName}</h3>
+                 <div className='bg-[#575756] w-full min-h-[40px] items-center mb-4'>
+                 <h3 className="text-white text-lg font-semibold mb-4">{categoryName}</h3> 
+                </div> 
 
                   <ul className="w-full">
                     {category.topNominees.map((nominee) => (
+                      <div>
                       <li key={nominee.id} className="flex justify-between items-center mb-4">
                         <div className="flex items-center">
                           <Image
@@ -679,9 +682,15 @@ export default function ViewSelections() {
                           </div>
                         </div>
                         <p className="text-lg font-bold text-[#dcc94a]">{nominee.percentage}</p>
+
                       </li>
+                      <hr className="w-full border-t border-gray-300/15 my-4 mx-auto" />
+
+                      </div>
+
                     ))}
                   </ul>
+
                 </div>
               );
             })}
